@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main Pages -->
+  <url><loc>https://www.pclaptech.in/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.pclaptech.in/services</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.pclaptech.in/parts</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.pclaptech.in/book-repair</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.pclaptech.in/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pclaptech.in/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Service SEO Pages -->
+  <url><loc>https://www.pclaptech.in/laptop-screen-replacement-delhi</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.pclaptech.in/laptop-battery-replacement-delhi</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.pclaptech.in/laptop-keyboard-repair-delhi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.pclaptech.in/laptop-motherboard-repair-delhi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.pclaptech.in/laptop-ssd-upgrade-delhi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.pclaptech.in/laptop-ram-upgrade-delhi</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Location Pages -->
+  <url><loc>https://www.pclaptech.in/delhi-laptop-repair</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.pclaptech.in/noida-laptop-repair</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.pclaptech.in/greater-noida-laptop-repair</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.pclaptech.in/faridabad-laptop-repair</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Blog -->
+  <url><loc>https://www.pclaptech.in/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.pclaptech.in/blog/top-10-laptop-problems</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pclaptech.in/blog/how-to-upgrade-laptop-ram</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pclaptech.in/blog/ssd-vs-hdd</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pclaptech.in/blog/signs-laptop-battery-needs-replacement</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pclaptech.in/blog/why-laptop-running-slow</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+</urlset>

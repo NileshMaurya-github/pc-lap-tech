@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin routes from being indexed
+Disallow: /admin
+Disallow: /admin-login
+
+# Sitemaps
+Sitemap: https://www.pclaptech.in/sitemap.xml
