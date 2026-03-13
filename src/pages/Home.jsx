@@ -64,7 +64,6 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section className="hero-pattern relative flex flex-col items-center justify-start pt-16 sm:pt-20 pb-6 sm:pb-10">
-        {/* Decorative blobs – hidden on mobile to save space */}
         <div className="hidden sm:block absolute top-20 right-10 w-72 h-72 rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%)' }} />
         <div className="hidden sm:block absolute bottom-20 left-10 w-96 h-96 rounded-full pointer-events-none"
@@ -75,31 +74,35 @@ export default function Home() {
           <ImageSlider />
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10 pt-5 sm:pt-6">
-          <motion.div {...up(0)}>
-            <span className="badge badge-blue mb-3 text-xs sm:text-sm">
-              <CheckCircle2 size={12} />
-              #1 Trusted Laptop Repair in Delhi NCR · 10,000+ Happy Customers
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10 pt-4 sm:pt-6">
+
+          {/* Trust badge */}
+          <motion.div {...up(0)} className="mb-3">
+            <span className="inline-flex items-center gap-1.5 flex-wrap justify-center badge badge-blue text-[11px] sm:text-sm leading-snug px-3 py-1.5">
+              <CheckCircle2 size={12} className="shrink-0" />
+              <span>#1 Trusted Laptop Repair in Delhi NCR · 10,000+ Happy Customers</span>
             </span>
           </motion.div>
 
+          {/* Heading */}
           <motion.h1 {...up(0.08)}
-            className="font-display font-black text-gray-900 mb-3 leading-none"
-            style={{ fontSize: 'clamp(1.75rem, 5vw, 4rem)', letterSpacing: '-0.03em' }}>
-            Professional Laptop{' '}
-            <span className="text-gradient">Repair Services</span>
+            className="font-display font-black text-gray-900 mb-2 sm:mb-3 leading-tight"
+            style={{ fontSize: 'clamp(1.6rem, 5vw, 3.8rem)', letterSpacing: '-0.02em' }}>
+            Professional Laptop <span className="text-gradient">Repair Services</span>
           </motion.h1>
 
+          {/* Subtext */}
           <motion.p {...up(0.16)}
-            className="text-slate-500 text-base sm:text-xl mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-            Fast, Reliable &amp; Affordable — Genuine parts, certified technicians, and doorstep service across Delhi NCR.
+            className="text-slate-500 text-sm sm:text-lg mb-5 sm:mb-8 max-w-xl mx-auto leading-relaxed px-2">
+            Fast, Reliable &amp; Affordable — Genuine parts, certified technicians &amp; doorstep service across Delhi NCR.
           </motion.p>
 
-          <motion.div {...up(0.22)} className="flex flex-wrap justify-center gap-3 mb-4">
-            <Link to="/book-repair" className="btn-blue text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4" style={{ borderRadius: '14px' }}>
+          {/* CTA Buttons — stacked on mobile, side by side on sm+ */}
+          <motion.div {...up(0.22)} className="flex flex-col sm:flex-row justify-center gap-3 mb-4 px-4 sm:px-0">
+            <Link to="/book-repair" className="btn-blue text-sm sm:text-base px-6 py-3 sm:py-4 w-full sm:w-auto" style={{ borderRadius: '14px' }}>
               Book Repair Now <ArrowRight size={16} />
             </Link>
-            <a href="tel:6306372863" className="btn-outline text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4" style={{ borderRadius: '14px' }}>
+            <a href="tel:6306372863" className="btn-outline text-sm sm:text-base px-6 py-3 sm:py-4 w-full sm:w-auto" style={{ borderRadius: '14px' }}>
               <Phone size={16} /> Call Now
             </a>
           </motion.div>
@@ -108,26 +111,30 @@ export default function Home() {
       </section>
 
       {/* ── WHY US ── */}
-      <section className="section pt-4">
+      <section className="section pt-4 pb-8 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div {...up()} className="text-center mb-14">
-            <span className="badge badge-blue mb-3">Why PC LAP TECH</span>
-            <h2 className="font-display font-black text-4xl text-gray-900 mt-3">
+          <motion.div {...up()} className="text-center mb-8 sm:mb-12">
+            <span className="badge badge-blue mb-2">Why PC LAP TECH</span>
+            <h2 className="font-display font-black text-2xl sm:text-4xl text-gray-900 mt-2">
               Why Thousands Choose <span className="text-gradient">Us</span>
             </h2>
-            <p className="text-slate-500 mt-3 text-lg max-w-xl mx-auto">The most trusted laptop care brand in Delhi NCR</p>
+            <p className="text-slate-500 mt-2 text-sm sm:text-lg max-w-xl mx-auto">The most trusted laptop care brand in Delhi NCR</p>
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {/* 2-col on mobile, 2-col on sm, 4-col on lg */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {highlights.map((h, i) => (
-              <motion.div key={i} {...up(i * 0.08)} 
-                whileHover={{ y: -8, scale: 1.03, boxShadow: '0 12px 24px -8px rgba(37,99,235,0.3)', borderColor: '#bfdbfe' }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="surface-card rounded-2xl p-7">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
-                  <h.icon size={22} className="text-blue-600" />
+              <motion.div key={i} {...up(i * 0.08)}
+                whileHover={{ y: -6, scale: 1.02, boxShadow: '0 12px 24px -8px rgba(37,99,235,0.25)', borderColor: '#bfdbfe' }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                className="surface-card rounded-2xl p-3 sm:p-7 flex flex-col items-start gap-2 sm:block">
+                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 sm:mb-5">
+                  <h.icon size={18} className="text-blue-600" />
                 </div>
-                <h3 className="font-display font-bold text-gray-900 text-lg mb-2">{h.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{h.desc}</p>
+                <div>
+                  <h3 className="font-display font-bold text-gray-900 text-sm sm:text-lg mb-0.5 sm:mb-2 leading-tight">{h.title}</h3>
+                  <p className="text-slate-500 text-[11px] sm:text-sm leading-relaxed">{h.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
