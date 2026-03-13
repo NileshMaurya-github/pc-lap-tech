@@ -20,28 +20,32 @@ export default function ImageSlider() {
 
   return (
     <div className="w-full">
-      {/* Edge-to-edge image — compact on mobile, taller on desktop */}
-      <div className="relative w-full overflow-hidden bg-black" style={{ height: 'clamp(180px, 40vw, 480px)' }}>
+      {/* Use a 16:5 aspect-ratio box so the banner images show fully without cropping */}
+      <div className="relative w-full overflow-hidden bg-slate-900" style={{ aspectRatio: '16 / 5' }}>
         <AnimatePresence initial={false} mode="sync">
           <motion.img
             key={currentIndex}
             src={images[currentIndex]}
-            initial={{ opacity: 0.4, x: -80 }}
+            initial={{ opacity: 0.4, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0.4, x: 80 }}
+            exit={{ opacity: 0.4, x: 60 }}
             transition={{ duration: 0.45, ease: 'easeOut' }}
-            className="absolute inset-0 w-full h-full object-cover"
-            alt={`Repair facility view ${currentIndex + 1}`}
+            className="absolute inset-0 w-full h-full object-contain"
+            alt={`Repair facility banner ${currentIndex + 1}`}
           />
         </AnimatePresence>
 
         {/* Navigation Dots */}
-        <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-10">
+        <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2 z-10">
           {images.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`rounded-full transition-all ${idx === currentIndex ? 'bg-blue-500 w-5 h-2' : 'bg-white/50 w-2 h-2 hover:bg-white/80'}`}
+              className={`rounded-full transition-all ${
+                idx === currentIndex
+                  ? 'bg-blue-500 w-5 h-2'
+                  : 'bg-white/50 w-2 h-2 hover:bg-white/80'
+              }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
