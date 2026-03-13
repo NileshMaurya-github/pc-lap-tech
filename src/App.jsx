@@ -12,6 +12,7 @@ import Parts       from './pages/Parts';
 import BookRepair  from './pages/BookRepair';
 import About       from './pages/About';
 import Contact     from './pages/Contact';
+import BillGenerator from './pages/BillGenerator';
 import Login       from './pages/Login';
 import Admin       from './pages/Admin';
 
@@ -43,6 +44,10 @@ function ProtectedRoute({ children }) {
 function Layout({ children }) {
   return (
     <>
+      <div className="bg-premium-container">
+        <div className="bg-aurora-orbs"></div>
+        <div className="bg-tech-grid"></div>
+      </div>
       <Navbar />
       <main>{children}</main>
       <Footer />
@@ -62,6 +67,7 @@ function AppRoutes() {
       <Route path="/book-repair" element={<Layout><BookRepair /></Layout>} />
       <Route path="/about" element={<Layout><About /></Layout>} />
       <Route path="/contact" element={<Layout><Contact /></Layout>} />
+      <Route path="/bill" element={<Layout><BillGenerator /></Layout>} />
 
       {/* ── SEO Service Pages ── */}
       <Route path="/laptop-screen-replacement-delhi" element={<Layout><ScreenReplacement /></Layout>} />

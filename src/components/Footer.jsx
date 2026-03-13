@@ -1,6 +1,116 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Laptop2, Phone, Mail, MapPin, ChevronRight, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+
+function BillAccessButton() {
+  const [show, setShow] = React.useState(false);
+  const [pwd, setPwd] = React.useState('');
+  const [error, setError] = React.useState(false);
+  const [shake, setShake] = React.useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (pwd === 'VV4455') {
+      setShow(false);
+      setPwd('');
+      navigate('/bill');
+    } else {
+      setError(true);
+      setPwd('');
+      setShake(true);
+      setTimeout(() => setShake(false), 500);
+    }
+  };
+
+  return (
+    <>
+      <button
+        onClick={() => { setShow(true); setError(false); setPwd(''); }}
+        title="Bill Generator"
+        className="flex items-center gap-1.5 transition-colors text-xs opacity-30 hover:opacity-70"
+        style={{ color: '#94a3b8' }}
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        Bill
+      </button>
+
+      {show && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center"
+          style={{ background: 'rgba(0,0,0,0.72)', backdropFilter: 'blur(8px)' }}
+          onClick={(e) => { if (e.target === e.currentTarget) { setShow(false); setPwd(''); } }}
+        >
+          <div
+            className="bg-white rounded-2xl p-8 w-80 shadow-2xl"
+            style={{ animation: shake ? 'billshake 0.4s ease' : 'none' }}
+          >
+            <div className="flex flex-col items-center mb-6">
+              <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-3">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </div>
+              <h3 className="font-bold text-gray-900 text-lg">Bill Generator</h3>
+              <p className="text-slate-500 text-sm text-center mt-1">Enter password to access</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <input
+                type="password"
+                value={pwd}
+                onChange={e => { setPwd(e.target.value); setError(false); }}
+                placeholder="Enter password"
+                autoFocus
+                className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all ${
+                  error
+                    ? 'border-red-400 bg-red-50 text-red-700 placeholder:text-red-300'
+                    : 'border-slate-200 bg-slate-50 focus:border-blue-500 focus:bg-white'
+                }`}
+              />
+              {error && (
+                <p className="text-red-500 text-xs font-medium text-center">
+                  Incorrect password. Try again.
+                </p>
+              )}
+              <button
+                type="submit"
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-colors"
+              >
+                Open Bill Generator
+              </button>
+              <button
+                type="button"
+                onClick={() => { setShow(false); setPwd(''); setError(false); }}
+                className="w-full py-2 text-slate-500 hover:text-slate-700 text-sm transition-colors"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes billshake {
+          0%, 100% { transform: translateX(0); }
+          20% { transform: translateX(-8px); }
+          40% { transform: translateX(8px); }
+          60% { transform: translateX(-5px); }
+          80% { transform: translateX(5px); }
+        }
+      `}</style>
+    </>
+  );
+}
 
 export default function Footer() {
   return (
@@ -97,6 +207,7 @@ export default function Footer() {
           className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-slate-500 text-sm">© {new Date().getFullYear()} PC LAP TECH. All rights reserved.</p>
           <p className="text-slate-600 text-sm">Laptop Repair Experts · Delhi NCR</p>
+          <BillAccessButton />
         </div>
       </div>
     </footer>

@@ -21,7 +21,7 @@ const audience = [
 
 export default function About() {
   return (
-    <div className="min-h-screen" style={{ background: '#f8fafc' }}>
+    <div className="min-h-screen bg-transparent">
       <div style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #0891b2 100%)', padding: '8rem 0 5rem' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <motion.div {...up()}>

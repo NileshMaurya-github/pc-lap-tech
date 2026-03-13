@@ -6,7 +6,7 @@ const up = (d = 0) => ({ initial: { opacity: 0, y: 24 }, whileInView: { opacity:
 
 export default function Contact() {
   return (
-    <div className="min-h-screen" style={{ background: '#f8fafc' }}>
+    <div className="min-h-screen bg-transparent">
       <div style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #0891b2 100%)', padding: '8rem 0 5rem' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <motion.div {...up()}>
@@ -23,8 +23,8 @@ export default function Contact() {
           {/* Contact cards */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             {[
-              { href: 'tel:6306372863', icon: Phone, color: 'blue', label: 'Call / WhatsApp', value: '6306372863', sub: 'Available 24×7' },
-              { href: 'https://wa.me/916306372863', icon: MessageCircle, color: 'green', label: 'WhatsApp Chat', value: 'Chat Now', sub: 'Instant response guaranteed' },
+              { href: 'tel:6306372860', icon: Phone, color: 'blue', label: 'Call / WhatsApp', value: '6306372860', sub: 'Available 24×7' },
+              { href: 'https://wa.me/916306372860', icon: MessageCircle, color: 'green', label: 'WhatsApp Chat', value: 'Chat Now', sub: 'Instant response guaranteed' },
               { href: 'mailto:Pclaptech000@gmail.com', icon: Mail, color: 'purple', label: 'Email Support', value: 'Pclaptech000@gmail.com', sub: 'Reply within 2 hours' },
             ].map((c, i) => {
               const bg = { blue: 'bg-blue-50', green: 'bg-green-50', purple: 'bg-purple-50' }[c.color];

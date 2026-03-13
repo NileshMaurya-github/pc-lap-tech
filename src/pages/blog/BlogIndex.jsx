@@ -23,7 +23,7 @@ export default function BlogIndex() {
         keywords="laptop repair tips Delhi, laptop upgrade guide, laptop troubleshooting, laptop battery tips, SSD upgrade guide"
         canonical="/blog"
       />
-      <div className="min-h-screen" style={{ background: '#f8fafc' }}>
+      <div className="min-h-screen bg-transparent">
         <div style={{ background: 'linear-gradient(135deg,#1e3a8a,#1d4ed8,#0891b2)', padding: '8rem 0 5rem' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
             <motion.div {...up()}>

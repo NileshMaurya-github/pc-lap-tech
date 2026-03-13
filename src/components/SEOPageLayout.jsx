@@ -9,7 +9,7 @@ const DEFAULT_FAQS = [
   { q: 'How much does laptop screen replacement cost in Delhi?', a: 'Laptop screen replacement at PC LAP TECH starts from ₹1,999 in Delhi NCR. The final price depends on your laptop brand, model, and screen type (HD, FHD, 4K, touch). We offer free diagnosis before quoting a price.' },
   { q: 'Do you repair all laptop brands?', a: 'Yes! We repair all laptop brands including HP, Dell, Lenovo, Asus, Acer, Samsung, MSI, Apple MacBook, Toshiba, Sony, and more. Our certified technicians are trained for all major brands.' },
   { q: 'How long does laptop repair take?', a: 'Most common repairs like screen replacement, battery replacement, and keyboard repair are completed the same day (2–4 hours). Complex repairs like motherboard or water damage may take 1–2 days.' },
-  { q: 'Do you offer home service in Delhi NCR?', a: 'Yes! We offer free doorstep pickup and delivery service across Delhi, Noida, Greater Noida, Faridabad, Gurugram, and Ghaziabad. Book online or call 6306372863.' },
+  { q: 'Do you offer home service in Delhi NCR?', a: 'Yes! We offer free doorstep pickup and delivery service across Delhi, Noida, Greater Noida, Faridabad, Gurugram, and Ghaziabad. Book online or call 6306372860.' },
   { q: 'What warranty do you provide on repairs?', a: 'We provide a 3-month warranty on all spare parts and labor. If any issue recurs within the warranty period, we fix it for free.' },
   { q: 'Do you use genuine parts for repairs?', a: 'Yes. We use only OEM-quality or original certified spare parts. We never use low-quality third-party components that reduce your laptop performance or lifespan.' },
 ];
@@ -68,10 +68,10 @@ export default function SEOPageLayout({ heroTag, subtitle, children, faqs = DEFA
               <Link to="/book-repair" className="btn-white text-base px-6 py-3" style={{ borderRadius: '12px' }}>
                 Book Repair Now <ArrowRight size={16} />
               </Link>
-              <a href="tel:6306372863"
+              <a href="tel:6306372860"
                 className="flex items-center gap-2 font-semibold text-white px-6 py-3 rounded-xl transition-all hover:bg-white/10"
                 style={{ border: '2px solid rgba(255,255,255,0.4)', borderRadius: '12px' }}>
-                <Phone size={16} /> 6306372863
+                <Phone size={16} /> 6306372860
               </a>
             </div>
             {/* Trust signals */}
@@ -128,12 +128,12 @@ export default function SEOPageLayout({ heroTag, subtitle, children, faqs = DEFA
           <p className="text-blue-100 mb-7 text-lg">Book online or call us now — same day service available.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/book-repair" className="btn-white">Book Repair <ArrowRight size={16} /></Link>
-            <a href={`https://wa.me/916306372863`} target="_blank" rel="noopener noreferrer"
+            <a href={`https://wa.me/916306372860`} target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-2 font-semibold text-white px-6 py-3 rounded-xl hover:bg-white/10 transition-all"
               style={{ background: '#25D366', borderRadius: '12px' }}>
               <MessageCircle size={16} /> WhatsApp
             </a>
-            <a href="tel:6306372863" className="btn-white">
+            <a href="tel:6306372860" className="btn-white">
               <Phone size={16} /> Call Now
             </a>
           </div>

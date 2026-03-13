@@ -1,24 +1,38 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Cpu, HardDrive, Battery, Monitor, Wrench, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
+import { Cpu, HardDrive, Battery, Monitor, Wrench, Keyboard as KeyboardIcon, Zap, Wind, Wifi, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 import { useDB } from '../context/DatabaseContext';
 
 const up = (d = 0) => ({ initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.5, delay: d, ease: [0.25, 0.25, 0, 1] } });
 const cats = [
-  { key: 'ram',     label: 'RAM Upgrades',       icon: Cpu,       desc: 'Boost multitasking instantly' },
-  { key: 'ssd',     label: 'SSD Storage',         icon: HardDrive, desc: 'Lightning fast upgrades' },
-  { key: 'battery', label: 'Battery Replacement', icon: Battery,   desc: 'Restore full battery life' },
-  { key: 'display', label: 'Display Panels',      icon: Monitor,   desc: 'Crystal clear screens' },
-  { key: 'other',   label: 'Other Parts',         icon: Wrench,    desc: 'Keys, fans, chargers & more' },
+  { key: 'ram',      label: 'RAM Upgrades',       icon: Cpu,          desc: 'Boost multitasking instantly' },
+  { key: 'ssd',      label: 'SSD Storage',        icon: HardDrive,    desc: 'Lightning fast upgrades' },
+  { key: 'battery',  label: 'Batteries',          icon: Battery,      desc: 'Restore full battery life' },
+  { key: 'display',  label: 'Display Panels',     icon: Monitor,      desc: 'Crystal clear screens' },
+  { key: 'keyboard', label: 'Keyboards',          icon: KeyboardIcon, desc: 'Backlit & standard layouts' },
+  { key: 'charger',  label: 'Chargers',           icon: Zap,          desc: 'Original power adapters' },
+  { key: 'cooling',  label: 'Cooling/Therm',      icon: Wind,         desc: 'Fans & thermal paste' },
+  { key: 'network',  label: 'Networking',         icon: Wifi,         desc: 'Wi-Fi & Bluetooth cards' },
+  { key: 'other',    label: 'Other Parts',        icon: Wrench,       desc: 'Hinges, trackpads & more' },
 ];
 
 export default function Parts() {
   const { db } = useDB();
+  const location = useLocation();
   const [active, setActive] = useState('ram');
 
+  useEffect(() => {
+    if (location.hash) {
+      const hash = location.hash.replace('#', '');
+      if (cats.some(c => c.key === hash)) {
+        setActive(hash);
+      }
+    }
+  }, [location.hash]);
+
   return (
-    <div className="min-h-screen" style={{ background: '#f8fafc' }}>
+    <div className="min-h-screen bg-transparent">
       {/* Hero */}
       <div style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #0891b2 100%)', padding: '8rem 0 5rem' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
@@ -96,7 +110,7 @@ export default function Parts() {
         </motion.div>
 
         {/* Overview cards */}
-        <motion.div {...up(0.1)} className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <motion.div {...up(0.1)} className="mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {cats.map((c, i) => (
             <motion.button key={c.key} {...up(i * 0.05)} onClick={() => setActive(c.key)}
               className={`surface-card rounded-2xl p-5 text-left transition-all ${active === c.key ? 'border-blue-400 bg-blue-50' : ''}`}>

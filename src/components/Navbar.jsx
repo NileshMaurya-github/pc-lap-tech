@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Laptop2, Phone, Menu, X, Settings, ChevronRight } from 'lucide-react';
+import { Laptop2, Phone, Menu, X, Settings, ChevronRight, Search } from 'lucide-react';
+import { useDB } from '../context/DatabaseContext';
 
 const navLinks = [
   { label: 'Home',          href: '/' },
@@ -16,6 +17,31 @@ export default function Navbar() {
   const [scrolled, setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { db } = useDB();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showResults, setShowResults] = useState(false);
+
+  // Derive search results from database
+  const searchResults = React.useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    const q = searchQuery.toLowerCase();
+    
+    const matchedServices = db.services.filter(s => s.name.toLowerCase().includes(q) || (s.category && s.category.toLowerCase().includes(q)));
+    
+    const matchedParts = [];
+    Object.entries(db.parts).forEach(([category, items]) => {
+      items.forEach(p => {
+        if (p.name.toLowerCase().includes(q)) {
+          matchedParts.push({ ...p, category });
+        }
+      });
+    });
+    
+    return [
+      ...matchedServices.map(s => ({ ...s, type: 'service', routeCategory: s.category || 'Hardware' })),
+      ...matchedParts.map(p => ({ ...p, type: 'part', routeCategory: p.category }))
+    ].slice(0, 6); // Limit to top 6 results
+  }, [searchQuery, db.services, db.parts]);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
@@ -23,7 +49,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  useEffect(() => setMobileOpen(false), [location.pathname]);
+  useEffect(() => {
+    setMobileOpen(false);
+    setSearchQuery('');
+    setShowResults(false);
+  }, [location.pathname]);
 
   return (
     <motion.header
@@ -68,15 +98,59 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2.5">
-          <a href="tel:6306372863"
-            className="btn-blue text-sm px-4 py-2.5" style={{ borderRadius: '10px', padding: '0.6rem 1.25rem' }}>
-            <Phone size={14} /> 6306372863
-          </a>
-          <Link to="/admin"
-            className="p-2.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-all">
-            <Settings size={18} />
-          </Link>
+        {/* Search Bar */}
+        <div className="hidden lg:block relative w-64 xl:w-80">
+          <div className="relative">
+            <input 
+              type="text" 
+              placeholder="Search services, repairs, parts..." 
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setShowResults(true);
+              }}
+              onFocus={() => setShowResults(true)}
+              onBlur={() => setTimeout(() => setShowResults(false), 200)}
+              className="w-full pl-10 pr-4 py-2 bg-slate-100/80 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all shadow-inner placeholder:text-slate-400 text-slate-700"
+            />
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+          </div>
+
+          {/* Search Dropdown */}
+          <AnimatePresence>
+            {showResults && searchQuery.trim() && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="absolute top-full mt-2 left-0 right-0 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden py-2 z-50"
+              >
+                {searchResults.length > 0 ? (
+                  searchResults.map((item, i) => (
+                    <Link 
+                      key={i} 
+                      to={item.type === 'service' ? `/services#${item.routeCategory}` : `/parts#${item.routeCategory}`}
+                      className="block px-4 py-2 hover:bg-slate-50 border-l-2 border-transparent hover:border-blue-500 transition-colors"
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-semibold text-gray-800 line-clamp-1 pr-4">{item.name}</span>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full whitespace-nowrap">
+                          {item.type}
+                        </span>
+                      </div>
+                      <span className="text-xs text-slate-500 block mt-0.5">
+                        {item.type === 'service' ? `Starts at ₹${item.price}` : `₹${item.price} • ${item.status}`}
+                      </span>
+                    </Link>
+                  ))
+                ) : (
+                  <div className="px-4 py-5 text-center text-sm text-slate-500">
+                    No results found for "{searchQuery}"
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <button className="lg:hidden p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-all"

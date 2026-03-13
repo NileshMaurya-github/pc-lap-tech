@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import {
   Phone, ArrowRight, Star, MapPin, CheckCircle2,
   Zap, Shield, Wrench, Truck, Clock, Award, Users, TrendingUp,
-  Monitor, Keyboard, Battery, HardDrive, Cpu
+  Monitor, Keyboard, Battery, HardDrive, Cpu, Droplets, Download, Link2, Database, MousePointer2, Wind
 } from 'lucide-react';
+import { SiHp, SiDell, SiLenovo, SiAsus, SiAcer, SiSamsung, SiMsi, SiApple } from 'react-icons/si';
+import ImageSlider from '../components/ImageSlider';
 
 const up = (d = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -15,14 +17,14 @@ const up = (d = 0) => ({
 });
 
 const brands = [
-  { name: 'HP',      color: '#0096D6', initial: 'H' },
-  { name: 'Dell',    color: '#007DB8', initial: 'De' },
-  { name: 'Lenovo',  color: '#E2231A', initial: 'Le' },
-  { name: 'Asus',    color: '#00539B', initial: 'As' },
-  { name: 'Acer',    color: '#83B81A', initial: 'Ac' },
-  { name: 'Samsung', color: '#1428A0', initial: 'Sa' },
-  { name: 'MSI',     color: '#D3262D', initial: 'MS' },
-  { name: 'Apple',   color: '#555',    initial: '' },
+  { name: 'HP',      color: '#0096D6', logo: <SiHp size={38} color="white" /> },
+  { name: 'Dell',    color: '#007DB8', logo: <SiDell size={38} color="white" /> },
+  { name: 'Lenovo',  color: '#E2231A', logo: <SiLenovo size={42} color="white" /> },
+  { name: 'Asus',    color: '#00539B', logo: <SiAsus size={38} color="white" /> },
+  { name: 'Acer',    color: '#83B81A', logo: <SiAcer size={38} color="white" /> },
+  { name: 'Samsung', color: '#1428A0', logo: <SiSamsung size={42} color="white" /> },
+  { name: 'MSI',     color: '#D3262D', logo: <SiMsi size={38} color="white" /> },
+  { name: 'Apple',   color: '#555555', logo: <SiApple size={36} color="white" /> },
 ];
 
 const highlights = [
@@ -33,12 +35,18 @@ const highlights = [
 ];
 
 const services = [
-  { icon: Monitor,   label: 'Screen Repair',    from: 1999 },
-  { icon: Battery,   label: 'Battery Replace',  from: 999 },
-  { icon: HardDrive, label: 'SSD Upgrade',      from: 1499 },
-  { icon: Cpu,       label: 'RAM Upgrade',      from: 2499 },
-  { icon: Keyboard,  label: 'Keyboard Repair',  from: 799 },
-  { icon: Wrench,    label: 'Motherboard Fix',  from: 2999 },
+  { icon: Monitor,       label: 'Screen Repair',    from: 1999 },
+  { icon: Battery,       label: 'Battery Replace',  from: 999 },
+  { icon: HardDrive,     label: 'SSD Upgrade',      from: 1499 },
+  { icon: Cpu,           label: 'RAM Upgrade',      from: 499 },
+  { icon: Keyboard,      label: 'Keyboard Repair',  from: 799 },
+  { icon: Wrench,        label: 'Motherboard Fix',  from: 2999 },
+  { icon: Droplets,      label: 'Water Damage',     from: 1499 },
+  { icon: Wind,          label: 'Fan & Cooling',    from: 499 },
+  { icon: Download,      label: 'OS Installation',  from: 399 },
+  { icon: Link2,         label: 'Hinges Repair',    from: 799 },
+  { icon: Database,      label: 'Data Recovery',    from: 1499 },
+  { icon: MousePointer2, label: 'Touchpad Repair',  from: 899 },
 ];
 
 const reviews = [
@@ -55,24 +63,27 @@ export default function Home() {
     <div className="overflow-hidden">
 
       {/* ── HERO ── */}
-      <section className="hero-pattern relative min-h-screen flex items-center justify-center pt-24 pb-20">
+      <section className="hero-pattern relative min-h-screen flex flex-col items-center justify-start pt-20 pb-10">
         {/* Decorative blobs */}
         <div className="absolute top-20 right-10 w-72 h-72 rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%)' }} />
         <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(8,145,178,0.06) 0%, transparent 70%)' }} />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10">
+        {/* ── IMAGE SLIDER PLACED AT THE VERY TOP ── */}
+        <ImageSlider />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10 pt-6">
           <motion.div {...up(0)}>
-            <span className="badge badge-blue mb-6">
+            <span className="badge badge-blue mb-4">
               <CheckCircle2 size={13} />
               #1 Trusted Laptop Repair in Delhi NCR · 10,000+ Happy Customers
             </span>
           </motion.div>
 
           <motion.h1 {...up(0.08)}
-            className="font-display font-black text-gray-900 mt-4 mb-6 leading-none"
-            style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', letterSpacing: '-0.03em' }}>
+            className="font-display font-black text-gray-900 mb-4 leading-none"
+            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', letterSpacing: '-0.03em' }}>
             Professional Laptop<br />
             <span className="text-gradient">Repair Services</span>
           </motion.h1>
@@ -83,7 +94,7 @@ export default function Home() {
             certified technicians, and doorstep service across Delhi NCR.
           </motion.p>
 
-          <motion.div {...up(0.22)} className="flex flex-wrap justify-center gap-4 mb-14">
+          <motion.div {...up(0.22)} className="flex flex-wrap justify-center gap-4 mb-4">
             <Link to="/book-repair" className="btn-blue text-base px-8 py-4" style={{ borderRadius: '14px', fontSize: '1.05rem' }}>
               Book Repair Now <ArrowRight size={18} />
             </Link>
@@ -92,26 +103,11 @@ export default function Home() {
             </a>
           </motion.div>
 
-          {/* Stats strip */}
-          <motion.div {...up(0.28)} className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {[
-              { icon: Users,       value: '10,000+', label: 'Happy Customers' },
-              { icon: Wrench,      value: '50+',     label: 'Expert Technicians' },
-              { icon: Award,       value: '5+ Yrs',  label: 'Experience' },
-              { icon: TrendingUp,  value: '98%',     label: 'Success Rate' },
-            ].map((s, i) => (
-              <div key={i} className="surface-card rounded-2xl p-5 text-center">
-                <s.icon size={20} className="text-blue-600 mx-auto mb-2" />
-                <p className="font-display font-black text-2xl text-gray-900">{s.value}</p>
-                <p className="text-slate-500 text-xs mt-0.5">{s.label}</p>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
       {/* ── WHY US ── */}
-      <section className="section" style={{ background: '#fff' }}>
+      <section className="section pt-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div {...up()} className="text-center mb-14">
             <span className="badge badge-blue mb-3">Why PC LAP TECH</span>
@@ -122,7 +118,10 @@ export default function Home() {
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((h, i) => (
-              <motion.div key={i} {...up(i * 0.08)} className="surface-card rounded-2xl p-7">
+              <motion.div key={i} {...up(i * 0.08)} 
+                whileHover={{ y: -8, scale: 1.03, boxShadow: '0 12px 24px -8px rgba(37,99,235,0.3)', borderColor: '#bfdbfe' }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="surface-card rounded-2xl p-7">
                 <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
                   <h.icon size={22} className="text-blue-600" />
                 </div>
@@ -146,7 +145,10 @@ export default function Home() {
           </motion.div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
             {services.map((s, i) => (
-              <motion.div key={i} {...up(i * 0.06)} className="surface-card rounded-2xl p-5 text-center">
+              <motion.div key={i} {...up(i * 0.06)} 
+                whileHover={{ y: -8, scale: 1.03, boxShadow: '0 12px 24px -8px rgba(37,99,235,0.3)', borderColor: '#bfdbfe' }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="surface-card rounded-2xl p-5 text-center cursor-pointer">
                 <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-3">
                   <s.icon size={22} className="text-blue-600" />
                 </div>
@@ -162,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* ── BRANDS ── */}
-      <section className="section" style={{ background: '#fff' }}>
+      <section className="section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div {...up()} className="text-center mb-12">
             <h2 className="font-display font-black text-4xl text-gray-900">
@@ -173,14 +175,12 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {brands.map((b, i) => (
               <motion.div key={i} {...up(i * 0.06)}
-                className="surface-card rounded-2xl p-6 flex flex-col items-center gap-3 cursor-default">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-black font-display text-lg"
+                whileHover={{ y: -8, scale: 1.03, boxShadow: '0 12px 24px -8px rgba(37,99,235,0.3)', borderColor: '#bfdbfe' }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="surface-card rounded-2xl p-6 flex flex-col items-center gap-3 cursor-pointer">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner"
                   style={{ background: b.color }}>
-                  {b.name === 'Apple' ? (
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="white">
-                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                    </svg>
-                  ) : b.initial}
+                  {b.logo}
                 </div>
                 <p className="font-display font-bold text-gray-800">{b.name}</p>
                 <p className="text-slate-400 text-xs">Expert Repair</p>
@@ -229,7 +229,7 @@ export default function Home() {
       </section>
 
       {/* ── REVIEWS ── */}
-      <section className="section" style={{ background: '#fff' }}>
+      <section className="section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div {...up()} className="text-center mb-12">
             <span className="badge badge-blue mb-3">Testimonials</span>
@@ -243,7 +243,10 @@ export default function Home() {
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {reviews.map((r, i) => (
-              <motion.div key={i} {...up(i * 0.08)} className="surface-card rounded-2xl p-6">
+              <motion.div key={i} {...up(i * 0.08)} 
+                whileHover={{ y: -8, scale: 1.03, boxShadow: '0 12px 24px -8px rgba(37,99,235,0.3)', borderColor: '#bfdbfe' }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="surface-card rounded-2xl p-6">
                 <div className="flex gap-0.5 mb-4">
                   {Array(r.rating).fill(0).map((_, j) => <Star key={j} size={14} className="text-amber-400 fill-amber-400" />)}
                 </div>
