@@ -98,12 +98,12 @@ export default function Home() {
           </motion.p>
 
           {/* CTA Buttons — stacked on mobile, side by side on sm+ */}
-          <motion.div {...up(0.22)} className="flex flex-col sm:flex-row justify-center gap-3 mb-4 px-4 sm:px-0">
-            <Link to="/book-repair" className="btn-blue text-sm sm:text-base px-6 py-3 sm:py-4 w-full sm:w-auto" style={{ borderRadius: '14px' }}>
-              Book Repair Now <ArrowRight size={16} />
+          <motion.div {...up(0.22)} className="flex flex-row justify-center gap-3 mb-4 px-2">
+            <Link to="/book-repair" className="btn-blue text-xs sm:text-base px-4 sm:px-8 py-2.5 sm:py-4" style={{ borderRadius: '14px' }}>
+              Book Repair <ArrowRight size={14} className="inline sm:hidden" /><ArrowRight size={16} className="hidden sm:inline" />
             </Link>
-            <a href="tel:6306372863" className="btn-outline text-sm sm:text-base px-6 py-3 sm:py-4 w-full sm:w-auto" style={{ borderRadius: '14px' }}>
-              <Phone size={16} /> Call Now
+            <a href="tel:6306372863" className="btn-outline text-xs sm:text-base px-4 sm:px-8 py-2.5 sm:py-4" style={{ borderRadius: '14px' }}>
+              <Phone size={14} className="sm:hidden" /><Phone size={16} className="hidden sm:block" /> Call Now
             </a>
           </motion.div>
 
