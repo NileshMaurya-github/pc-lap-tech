@@ -63,7 +63,7 @@ export default function Home() {
     <div className="overflow-hidden">
 
       {/* ── HERO ── */}
-      <section className="hero-pattern relative flex flex-col items-center justify-start pt-16 sm:pt-20 pb-6 sm:pb-10">
+      <section className="hero-pattern relative flex flex-col items-center justify-start pt-16 sm:pt-20 pb-2 sm:pb-10">
         <div className="hidden sm:block absolute top-20 right-10 w-72 h-72 rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%)' }} />
         <div className="hidden sm:block absolute bottom-20 left-10 w-96 h-96 rounded-full pointer-events-none"
@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
       {/* ── WHY US ── */}
-      <section className="section pt-4 pb-8 sm:pb-12">
+      <section className="section pt-1 pb-6 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div {...up()} className="text-center mb-8 sm:mb-12">
             <span className="badge badge-blue mb-2">Why PC LAP TECH</span>
