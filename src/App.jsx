@@ -4,6 +4,7 @@ import { DatabaseProvider, useDB } from './context/DatabaseContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
+import ScrollToTop from './components/ScrollToTop';
 
 // Main pages
 import Home        from './pages/Home';
@@ -105,6 +106,7 @@ export default function App() {
   return (
     <DatabaseProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <AppRoutes />
       </BrowserRouter>
     </DatabaseProvider>
