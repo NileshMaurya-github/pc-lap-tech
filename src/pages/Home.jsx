@@ -121,20 +121,22 @@ export default function Home() {
             <p className="text-slate-500 mt-2 text-sm sm:text-lg max-w-xl mx-auto">The most trusted laptop care brand in Delhi NCR</p>
           </motion.div>
 
-          {/* 2-col on mobile, 2-col on sm, 4-col on lg */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {highlights.map((h, i) => (
               <motion.div key={i} {...up(i * 0.08)}
                 whileHover={{ y: -6, scale: 1.02, boxShadow: '0 12px 24px -8px rgba(37,99,235,0.25)', borderColor: '#bfdbfe' }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="surface-card rounded-2xl p-3 sm:p-7 flex flex-col items-start gap-2 sm:block">
-                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 sm:mb-5">
-                  <h.icon size={18} className="text-blue-600" />
+                className="surface-card rounded-2xl p-3 sm:p-7">
+                {/* Icon + Title in same row */}
+                <div className="flex items-center gap-2 mb-1.5 sm:block">
+                  <div className="w-7 h-7 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-50 flex items-center justify-center shrink-0 sm:mb-5">
+                    <h.icon size={14} className="text-blue-600 sm:hidden" />
+                    <h.icon size={22} className="text-blue-600 hidden sm:block" />
+                  </div>
+                  <h3 className="font-display font-bold text-gray-900 text-xs sm:text-lg leading-tight sm:hidden">{h.title}</h3>
                 </div>
-                <div>
-                  <h3 className="font-display font-bold text-gray-900 text-sm sm:text-lg mb-0.5 sm:mb-2 leading-tight">{h.title}</h3>
-                  <p className="text-slate-500 text-[11px] sm:text-sm leading-relaxed">{h.desc}</p>
-                </div>
+                <h3 className="font-display font-bold text-gray-900 text-lg mb-2 hidden sm:block">{h.title}</h3>
+                <p className="text-slate-500 text-[10px] sm:text-sm leading-relaxed">{h.desc}</p>
               </motion.div>
             ))}
           </div>
