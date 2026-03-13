@@ -63,43 +63,44 @@ export default function Home() {
     <div className="overflow-hidden">
 
       {/* ── HERO ── */}
-      <section className="hero-pattern relative min-h-screen flex flex-col items-center justify-start pt-20 pb-10">
-        {/* Decorative blobs */}
-        <div className="absolute top-20 right-10 w-72 h-72 rounded-full pointer-events-none"
+      <section className="hero-pattern relative flex flex-col items-center justify-start pt-16 sm:pt-20 pb-6 sm:pb-10">
+        {/* Decorative blobs – hidden on mobile to save space */}
+        <div className="hidden sm:block absolute top-20 right-10 w-72 h-72 rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full pointer-events-none"
+        <div className="hidden sm:block absolute bottom-20 left-10 w-96 h-96 rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(8,145,178,0.06) 0%, transparent 70%)' }} />
 
-        {/* ── IMAGE SLIDER PLACED AT THE VERY TOP ── */}
-        <ImageSlider />
+        {/* IMAGE SLIDER */}
+        <div className="w-full">
+          <ImageSlider />
+        </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10 pt-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10 pt-5 sm:pt-6">
           <motion.div {...up(0)}>
-            <span className="badge badge-blue mb-4">
-              <CheckCircle2 size={13} />
+            <span className="badge badge-blue mb-3 text-xs sm:text-sm">
+              <CheckCircle2 size={12} />
               #1 Trusted Laptop Repair in Delhi NCR · 10,000+ Happy Customers
             </span>
           </motion.div>
 
           <motion.h1 {...up(0.08)}
-            className="font-display font-black text-gray-900 mb-4 leading-none"
-            style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', letterSpacing: '-0.03em' }}>
-            Professional Laptop<br />
+            className="font-display font-black text-gray-900 mb-3 leading-none"
+            style={{ fontSize: 'clamp(1.75rem, 5vw, 4rem)', letterSpacing: '-0.03em' }}>
+            Professional Laptop{' '}
             <span className="text-gradient">Repair Services</span>
           </motion.h1>
 
           <motion.p {...up(0.16)}
-            className="text-slate-500 text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-            Fast, Reliable & Affordable — We fix all brands with genuine parts,<br className="hidden md:block" />
-            certified technicians, and doorstep service across Delhi NCR.
+            className="text-slate-500 text-base sm:text-xl mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
+            Fast, Reliable &amp; Affordable — Genuine parts, certified technicians, and doorstep service across Delhi NCR.
           </motion.p>
 
-          <motion.div {...up(0.22)} className="flex flex-wrap justify-center gap-4 mb-4">
-            <Link to="/book-repair" className="btn-blue text-base px-8 py-4" style={{ borderRadius: '14px', fontSize: '1.05rem' }}>
-              Book Repair Now <ArrowRight size={18} />
+          <motion.div {...up(0.22)} className="flex flex-wrap justify-center gap-3 mb-4">
+            <Link to="/book-repair" className="btn-blue text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4" style={{ borderRadius: '14px' }}>
+              Book Repair Now <ArrowRight size={16} />
             </Link>
-            <a href="tel:6306372863" className="btn-outline text-base px-8 py-4" style={{ borderRadius: '14px', fontSize: '1.05rem' }}>
-              <Phone size={18} /> Call Now
+            <a href="tel:6306372863" className="btn-outline text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4" style={{ borderRadius: '14px' }}>
+              <Phone size={16} /> Call Now
             </a>
           </motion.div>
 
