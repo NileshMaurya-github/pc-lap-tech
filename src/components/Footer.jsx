@@ -124,7 +124,7 @@ export default function Footer() {
                 <Laptop2 size={22} className="text-white" />
               </div>
               <div>
-                <span className="font-display font-black text-white text-xl">PC LAP</span>
+                <span className="font-display font-black text-white text-xl">PC LAP</span>{' '}
                 <span className="font-display font-black text-blue-400 text-xl">TECH</span>
               </div>
             </Link>

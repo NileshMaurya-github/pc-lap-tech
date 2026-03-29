@@ -15,7 +15,7 @@ const up = (d = 0) => ({
 
 const brands = ['HP', 'Dell', 'Lenovo', 'Asus', 'Acer', 'Samsung', 'MSI', 'Apple', 'Toshiba', 'Sony', 'Other'];
 
-const WHATSAPP_NUMBER = '916306372860'; // Country code + number
+const WHATSAPP_NUMBER = '916306372863'; // Country code + number
 
 function buildWhatsAppMessage(form, bookingId) {
   const line = '─────────────────────────';
@@ -133,8 +133,8 @@ export default function BookRepair() {
           {/* Contact */}
           <div className="text-slate-500 text-sm">
             <p>For urgent queries:</p>
-            <a href="tel:6306372860" className="text-blue-600 font-black text-2xl block mt-1 hover:text-blue-700 transition-colors">
-              6306372860
+            <a href="tel:6306372863" className="text-blue-600 font-black text-2xl block mt-1 hover:text-blue-700 transition-colors">
+              6306372863
             </a>
           </div>
 

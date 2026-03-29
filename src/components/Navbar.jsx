@@ -79,7 +79,7 @@ export default function Navbar() {
             style={{ width: '40px', height: '40px', borderRadius: '10px', objectFit: 'cover', boxShadow: '0 2px 8px rgba(37,99,235,0.25)' }}
           />
           <div className="leading-tight">
-            <span className="font-display font-black text-gray-900 text-xl tracking-tight">PC LAP</span>
+            <span className="font-display font-black text-gray-900 text-xl tracking-tight">PC LAP</span>{' '}
             <span className="font-display font-black text-blue-600 text-xl tracking-tight">TECH</span>
           </div>
         </Link>
